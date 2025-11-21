@@ -285,8 +285,8 @@ let selected2 = Infinity;
 
 // форматирование выводимых значений
 function formatNumber(n) {
-  if (n === Infinity) return "—";      // для +∞
-  if (n === -Infinity) return "—";     // для -∞
+  if (n === Infinity) return "–";      // для +∞
+  if (n === -Infinity) return "–";     // для -∞
   return (n > 0 ? "+" : "") + n.toLocaleString('ru-RU'); // плюсы остаются
 }
 
@@ -379,18 +379,19 @@ function createSpinner(containerId, values, startValue = 0, onChange) {
 
 // массивы значений
 const values1 = [
-  -Infinity, -1000000, -900000, -800000, -700000, -600000,
+  -1000000, -900000, -800000, -700000, -600000,
   -500000, -400000, -300000, -200000, -100000, -50000,
-   0,
+   -Infinity, 0, Infinity,
    50000, 100000, 200000, 300000, 400000, 500000,
-   600000, 700000, 800000, 900000, 1000000, Infinity
+   600000, 700000, 800000, 900000, 1000000
 ];
 
 const values2 = [
-  -Infinity, -1000000, -900000, -800000, -700000, -600000, -500000,
-  -400000, -300000, -200000, -100000, -50000, 0,
+  -1000000, -900000, -800000, -700000, -600000, -500000,
+  -400000, -300000, -200000, -100000, -50000, 
+  -Infinity, 0, Infinity,
    50000, 100000, 200000, 300000, 400000, 500000,
-   600000, 700000, 800000, 900000, 1000000, Infinity
+   600000, 700000, 800000, 900000, 1000000
 ];
 
 // создаём спиннеры
@@ -412,6 +413,9 @@ function updateImage() {
 
 // обновление прогресс-бара
 function updateProgress(leftValue, rightValue) {
+
+
+
   const leftBar = document.querySelector('.progress-left');
   const rightBar = document.querySelector('.progress-right');
   const maxAbs = 1000000;
