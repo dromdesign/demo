@@ -381,7 +381,7 @@ function createSpinner(containerId, values, startValue = 0, onChange) {
 const values1 = [
   -1000000, -900000, -800000, -700000, -600000,
   -500000, -400000, -300000, -200000, -100000, -50000,
-   -Infinity,
+   0,
    50000, 100000, 200000, 300000, 400000, 500000,
    600000, 700000, 800000, 900000, 1000000
 ];
@@ -389,17 +389,17 @@ const values1 = [
 const values2 = [
   -1000000, -900000, -800000, -700000, -600000, -500000,
   -400000, -300000, -200000, -100000, -50000, 
-  Infinity,
+  0,
    50000, 100000, 200000, 300000, 400000, 500000,
    600000, 700000, 800000, 900000, 1000000
 ];
 
 // создаём спиннеры
-createSpinner('spinner1', values1, -Infinity, val => {
+createSpinner('spinner1', values1, 0, val => {
   selected1 = val;
   updateImage();
 });
-createSpinner('spinner2', values2, Infinity, val => {
+createSpinner('spinner2', values2, 0, val => {
   selected2 = val;
   updateImage();
 });
@@ -413,8 +413,6 @@ function updateImage() {
 
 // обновление прогресс-бара
 function updateProgress(leftValue, rightValue) {
-
-
 
   const leftBar = document.querySelector('.progress-left');
   const rightBar = document.querySelector('.progress-right');
@@ -471,18 +469,18 @@ function resetSpinners() {
   document.getElementById("items1").innerHTML = "";
   document.getElementById("items2").innerHTML = "";
 
-  selected1 = -Infinity;
-  selected2 = Infinity;
+  selected1 = 0;
+  selected2 = 0;
 
   updateImage();
 
   // просто снова создаём спиннеры с начальными значениями
-  createSpinner('spinner1', values1, -Infinity, val => {
+  createSpinner('spinner1', values1, 0, val => {
     selected1 = val;
     updateImage();
   });
 
-  createSpinner('spinner2', values2, Infinity, val => {
+  createSpinner('spinner2', values2, 0, val => {
     selected2 = val;
     updateImage();
   });
